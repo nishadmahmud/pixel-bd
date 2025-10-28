@@ -475,7 +475,7 @@ const Header = ({ data }) => {
                 <input
                   ref={searchInputRef}
                   type="text"
-                  placeholder="Search products..."
+                  placeholder="Search a products..."
                   value={keyword}
                   onChange={handleSearchChange}
                   onFocus={() => {
@@ -483,7 +483,7 @@ const Header = ({ data }) => {
                       setShowBar(true)
                     }
                   }}
-                  className="w-full px-4 py-2 pl-10 pr-4 rounded-full bg-gray-100 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-300 text-sm"
+                  className="w-full px-4 py-2 pl-10 pr-4 text-[16px] rounded-full bg-gray-100 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-300"
                 />
                 <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
 

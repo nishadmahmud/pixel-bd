@@ -38,7 +38,7 @@ const ProductCard = ({ product }) => {
     Date.now() - new Date(product.createdAt).getTime() < 7 * 24 * 60 * 60 * 1000;
 
   return (
-    <div className="relative md:w-[220px] w-[150px] md:h-[350px] h-[250px] bg-white border border-gray-200 md:rounded-2xl rounded-md shadow-sm hover:shadow-md transition-all duration-300 flex flex-col items-start justify-between p-6 text-left">
+    <div className="relative md:w-[220px] w-[170px] md:h-[350px] h-[250px] bg-white border border-gray-200 md:rounded-2xl rounded-md shadow-sm hover:shadow-md transition-all duration-300 flex flex-col items-start justify-between p-6 text-left">
       {/* Badge */}
       {isNew && (
         <div className="absolute top-2 left-2 bg-blue-100 text-blue-700 text-xs font-semibold py-1 px-3 rounded-full">
