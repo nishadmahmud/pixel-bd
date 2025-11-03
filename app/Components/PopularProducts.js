@@ -13,7 +13,7 @@ import ProductCard from "./ProductCard";
 
 const PopularProducts = () => {
   const { data: products, isLoading } = useSWR(
-    `${process.env.NEXT_PUBLIC_API}/public/products/${userId}?page=1&limit=10`,
+    `${process.env.NEXT_PUBLIC_API}/public/best-sellers/${userId}`,
     fetcher,
     { revalidateOnFocus: false }
   );
@@ -30,8 +30,8 @@ const PopularProducts = () => {
   };
 
   return (
-    <div className="lg:mt-20 mt-10 md:w-9/12 w-10/12 mx-auto">
-      <Heading title={"Popular on the PixedBD."} />
+    <div className="lg:my-12 my-8 md:w-9/12 w-10/12 mx-auto">
+      <Heading title={"Popular on the Pixel Bd."} />
 
       {isLoading ? (
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mt-6">
@@ -72,7 +72,7 @@ const PopularProducts = () => {
             className="pb-6"
           >
             {products?.data?.length > 0 ? (
-              products.data.map((product) => (
+              products?.data.slice(0,10).map((product) => (
                 <SwiperSlide key={product.id}>
                  <ProductCard product={product}></ProductCard>
                 </SwiperSlide>

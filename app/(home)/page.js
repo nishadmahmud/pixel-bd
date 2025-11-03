@@ -7,6 +7,8 @@ import PopularProducts from "../Components/PopularProducts";
 import PixelShowcase from "../Components/PixelShowcase";
 import Camaras from "../Components/Camaras";
 import WhyBuySection from "../Components/WhyBuySection";
+import NewArrival from "../Components/NewArrival";
+import Blogs from "./blogs/page";
 
 
 
@@ -48,12 +50,15 @@ export default async function Home() {
       <PromotionModal />
       <HeroSlider slider={slider} banner={banner} />
       {/* <OurFeatures /> */}
-      <PopularProducts />
+      <NewArrival></NewArrival>
       <ProductBannerOne banner={banner?.data}></ProductBannerOne>
+      <PopularProducts />
       <PixelShowcase></PixelShowcase>
       <FeaturedCategories categories={categories} />
 
-      <Camaras></Camaras>
+      {/* <Camaras></Camaras> */}
+
+      <Blogs></Blogs>
 
       <WhyBuySection></WhyBuySection>
 

@@ -1,102 +1,88 @@
-'use client'
-import React, { useEffect, useRef, useState } from 'react';
-import Heading from '../CustomHooks/heading';
-import Image from 'next/image';
-import useSWR from 'swr';
-import CardSkeleton from './CardSkeleton';
-import ProductCard from './ProductCard';
-import { fetcher, userId } from '../utils/constants';
+"use client";
+import React, { useState, useRef } from "react";
+import Heading from "../CustomHooks/heading";
+import useSWR from "swr";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import { fetcher, userId } from "../utils/constants";
+import CardSkeleton from "./CardSkeleton";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import ProductCard from "./ProductCard";
 
-const NewArrival = ({ banner }) => {
-  const { data: newArrivals, isLoading } = useSWR(
+const NewArrival = () => {
+  const { data: products, isLoading } = useSWR(
     `${process.env.NEXT_PUBLIC_API}/public/new-arrivals/${userId}`,
     fetcher,
-    {
-      revalidateOnFocus: false,
-      revalidateIfStale: false,
-      revalidateOnReconnect: false,
-    }
+    { revalidateOnFocus: false }
   );
 
-  const products = newArrivals?.data?.data || [];
-  const bannerImage = banner?.data?.[4];
+  const swiperRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(0);
 
-  // 🔹 State + refs for syncing height
-  const leftRef = useRef(null);
-  const rightRef = useRef(null);
-  const [videoHeight, setVideoHeight] = useState(350);
+  const handlePrev = () => {
+    if (swiperRef.current) swiperRef.current.slidePrev();
+  };
 
-  useEffect(() => {
-    const resizeObserver = new ResizeObserver(() => {
-      const leftHeight = leftRef.current?.offsetHeight || 0;
-      const rightHeight = rightRef.current?.offsetHeight || 0;
-      const maxHeight = Math.max(leftHeight, rightHeight);
-      setVideoHeight(maxHeight);
-    });
-
-    if (leftRef.current) resizeObserver.observe(leftRef.current);
-    if (rightRef.current) resizeObserver.observe(rightRef.current);
-
-    return () => resizeObserver.disconnect();
-  }, [products, isLoading]);
+  const handleNext = () => {
+    if (swiperRef.current) swiperRef.current.slideNext();
+  };
 
   return (
-    <div className="mt-12 w-11/12 mx-auto">
-      <Heading title="New Arrival" />
+    <div className="lg:mt-20 mt-10 md:w-9/12 w-10/12 mx-auto">
+      <Heading title={"New Arrival"} />
 
-      {/* Banner for mobile */}
-      {bannerImage && (
-        <div className="relative w-full h-52 block lg:hidden rounded-md overflow-hidden mt-6">
-          <Image
-            src={bannerImage?.image_path}
-            alt={bannerImage.title || 'Banner'}
-            fill
-            className="object-cover w-full h-full rounded-md"
-            quality={100}
-          />
+      {isLoading ? (
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mt-6">
+          {Array.from({ length: 5 }).map((_, idx) => (
+            <CardSkeleton key={idx} />
+          ))}
+        </div>
+      ) : (
+        <div className="relative mt-8">
+          {/* Custom navigation buttons */}
+          <button
+            onClick={handlePrev}
+            className={`absolute md:-left-20 -left-10 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full shadow-md border bg-white hover:bg-gray-100 transition ${
+              activeIndex === 0 ? "opacity-50 cursor-not-allowed" : "opacity-100"
+            }`}
+          >
+            <ChevronLeft color="black" className="w-5 h-5" />
+          </button>
+
+          <button
+            onClick={handleNext}
+            className={`absolute md:-right-20 -right-10 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full shadow-md border bg-white hover:bg-gray-100 transition`}
+          >
+            <ChevronRight color="black" className="w-5 h-5" />
+          </button>
+
+          <Swiper
+            onSwiper={(swiper) => (swiperRef.current = swiper)}
+            onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
+            modules={[Navigation]}
+            slidesPerView={5}
+            spaceBetween={25}
+            breakpoints={{
+              320: { slidesPerView: 2, spaceBetween: 10 },
+              768: { slidesPerView: 3, spaceBetween: 15 },
+              1024: { slidesPerView: 5, spaceBetween: 25 },
+            }}
+            className="pb-6"
+          >
+            {products?.data?.data.length > 0 ? (
+              products?.data?.data.slice(0,10).map((product) => (
+                <SwiperSlide key={product.id}>
+                 <ProductCard product={product}></ProductCard>
+                </SwiperSlide>
+              ))
+            ) : (
+              <p className="text-center w-full py-8 text-black">No products found</p>
+            )}
+          </Swiper>
         </div>
       )}
-
-      {/* Grid Layout */}
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-6 mt-8 items-start">
-        
-        {/* Left products */}
-        <div ref={leftRef} className="grid grid-cols-2 gap-4">
-          {isLoading
-            ? Array.from({ length: 4 }).map((_, idx) => <CardSkeleton key={idx} />)
-            : products.length > 0
-            ? products.slice(0, 4).map((product, idx) => (
-                <ProductCard key={idx} product={product} />
-              ))
-            : <p className="col-span-full text-center text-gray-500">No products</p>}
-        </div>
-
-        {/* Center video */}
-        <div
-          className="relative w-full lg:w-[300px] xl:w-[340px] rounded-lg overflow-hidden"
-          style={{ height: videoHeight }}
-        >
-          <video
-            src="/bannerVideo.mp4"
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="w-full h-full object-cover rounded-lg"
-          />
-        </div>
-
-        {/* Right products */}
-        <div ref={rightRef} className="grid grid-cols-2 gap-4">
-          {isLoading
-            ? Array.from({ length: 4 }).map((_, idx) => <CardSkeleton key={idx} />)
-            : products.length > 4
-            ? products.slice(4, 8).map((product, idx) => (
-                <ProductCard key={idx} product={product} />
-              ))
-            : null}
-        </div>
-      </div>
     </div>
   );
 };

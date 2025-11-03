@@ -1,78 +1,94 @@
-'use client';
-import Image from "next/image";
+"use client";
+
+import { useRef } from "react";
+import useSWR from "swr";
 import Link from "next/link";
-import useStore from "@/app/CustomHooks/useStore";
+import Image from "next/image";
+import { fetcher, userId } from "@/app/utils/constants";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
 
-export default function Page() {
-  const { blogs } = useStore();
+export default function Blogs() {
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
 
+  const { data, error } = useSWR(
+    `${process.env.NEXT_PUBLIC_API}/latest-ecommerce-blog-list/${userId}`,
+    fetcher
+  );
+
+  if (error) return <p className="text-center py-20">Failed to load blogs.</p>;
+  if (!data) return <p className="text-center py-20">Loading blogs...</p>;
+
+  const blogs = data?.data || [];
 
   return (
-    <div className="w-10/12 md:w-9/12 mx-auto pb-8 pt-4">
-      <div className="flex flex-col lg:flex-row justify-between gap-8 lg:gap-16">
-        {/* Blog posts grid */}
-        <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:w-8/12">
-          {blogs?.data && blogs.data.length > 0 ? (
-            blogs.data.map((post) => (
-              <div
-                key={post.id}
-                className="bg-white rounded-lg overflow-hidden w-full shadow-sm"
-              >
-                <Image
-                  src={post.image || "/placeholder.svg"}
-                  alt={post.title}
-                  width={300}
-                  height={400}
-                  className="w-full h-48 sm:h-56 md:h-64 object-cover"
-                />
-                <div className="p-4 text-black">
-                  <h2 className="text-lg md:text-xl font-semibold mb-2">{post.title}</h2>
-                  <p className="text-gray-600 text-sm mb-4">{post.excerpt}</p>
-                  <div className="flex justify-between items-center text-sm">
-                    <span className="text-gray-500">{post.date}</span>
-                    <Link href={`/blogs/${post.id}`} className="text-blue-600 hover:underline">
-                      Read more
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            ))
-          ) : (
-            <p className="text-center text-gray-600 col-span-full">No blog posts available.</p>
-          )}
-        </div>
+    <main className="md:w-9/12 w-10/12 mx-auto pt-16 text-black poppins">
+      <h1 className="text-3xl font-medium text-center mb-12 poppins">
+        Discover the world of Pixel.
+      </h1>
 
-        {/* Recent posts sidebar */}
-        <div className="lg:w-4/12 rounded-lg border border-gray-200 bg-white p-6">
-          <h2 className="mb-4 text-xl md:text-2xl font-bold text-gray-900">Recent Posts</h2>
-          <div className="divide-y divide-gray-100">
-            {blogs?.data && blogs.data.length > 0 ? (
-              blogs.data.map((post, index) => (
-                <div key={index}>
+      <div className="relative px-8">
+        {/* Navigation Buttons */}
+        <button
+          ref={prevRef}
+          className="absolute -left-10 top-1/2 -translate-y-1/2 z-10 bg-white shadow-md rounded-full p-3 hover:bg-gray-100 border"
+        >
+          <ChevronLeft className="w-6 h-6" />
+        </button>
+
+        <button
+          ref={nextRef}
+          className="absolute -right-10 top-1/2 -translate-y-1/2 z-10 bg-white shadow-md rounded-full p-3 hover:bg-gray-100 border"
+        >
+          <ChevronRight className="w-6 h-6" />
+        </button>
+
+        {/* Swiper Slider */}
+        <Swiper
+          modules={[Navigation]}
+          spaceBetween={24}
+          slidesPerView={1}
+          loop={true}
+          onInit={(swiper) => {
+            swiper.params.navigation.prevEl = prevRef.current;
+            swiper.params.navigation.nextEl = nextRef.current;
+            swiper.navigation.init();
+            swiper.navigation.update();
+          }}
+          breakpoints={{
+            768: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
+          }}
+        >
+          {blogs.map((blog) => (
+            <SwiperSlide key={blog.id}>
+              <div className="bg-white overflow-hidden flex flex-col text-center h-full">
+                <div className="relative w-full h-64 rounded-3xl">
+                  <Image
+                    src={blog.image}
+                    alt={blog.title}
+                    fill
+                    className="object-cover rounded-3xl"
+                  />
+                </div>
+                <div className="p-6 flex flex-col gap-4">
+                  <h3 className="text-lg font-medium poppins">{blog.title}</h3>
                   <Link
-                    href={`/blogs/${post.id}`}
-                    className="flex items-start gap-4 py-4 transition-colors hover:bg-gray-50"
+                    href={`/blogs/${blog.id}`}
+                    className="text-blue-600 font-medium hover:underline inline-flex justify-center poppins"
                   >
-                    <Image
-                      width={50}
-                      height={50}
-                      src={post.image || "/placeholder.svg"}
-                      alt={post.title}
-                      className="h-16 w-16 rounded-lg object-cover"
-                      loading="lazy"
-                    />
-                    <h3 className="text-sm font-medium leading-snug text-gray-900">
-                      {post.title}
-                    </h3>
+                    Read article →
                   </Link>
                 </div>
-              ))
-            ) : (
-              <p className="text-gray-500">No recent posts</p>
-            )}
-          </div>
-        </div>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
-    </div>
+    </main>
   );
 }

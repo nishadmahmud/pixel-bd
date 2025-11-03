@@ -132,7 +132,7 @@ export default function Footer() {
         {/* Divider */}
         <div className="border-t border-gray-300 mt-10 pt-6 text-center text-xs text-gray-600">
           <p>
-            © 2025 <span className="font-medium">PixedBD</span>. All rights reserved.
+            © 2025 <span className="font-medium">Pixel Bd</span>. All rights reserved.
           </p>
           <p className="mt-1">
             Designed & Developed by{" "}
