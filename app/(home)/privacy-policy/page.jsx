@@ -126,13 +126,8 @@ export default function PrivacyPolicyPage() {
           </h2>
           <p>
             For questions, feedback, or privacy concerns, please reach out to us at{" "}
-            <a
-              href="mailto:privacy@gadgetzone.com"
-              className="text-red-600 font-medium hover:underline"
-            >
-              support@appledady.com
-            </a>{" "}
-            or call <strong>+8801345755216</strong>.
+            
+            or call <strong>++8801601109872</strong>.
           </p>
         </section>
 

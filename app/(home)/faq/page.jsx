@@ -6,36 +6,47 @@ import { ChevronDown } from "lucide-react";
 
 const faqData = [
   {
-    question: "What is the warranty period for your smartphones?",
+    question: "Do you sell authentic Google Pixel phones?",
     answer:
-      "All our smartphones come with a 1-year official manufacturer warranty covering hardware defects and software malfunctions. Accessories are covered for 6 months.",
+      "Yes! All Google Pixel devices we sell are 100% original and officially imported from Google’s authorized distributors. Each phone comes factory-sealed with a valid warranty.",
   },
   {
-    question: "Do you offer international shipping?",
+    question: "What warranty do Google Pixel phones include?",
     answer:
-      "Yes, we deliver across multiple countries. Shipping fees and delivery times vary based on location. You can view estimated delivery times during checkout.",
+      "All Google Pixel smartphones include a 1-year official warranty covering manufacturing defects and software issues. Accessories like chargers and cables are covered for 6 months.",
   },
   {
-    question: "Can I return or exchange my phone?",
+    question: "Can I exchange or return my Google Pixel device?",
     answer:
-      "Yes, you can request a return or exchange within 7 days of delivery if the product is unused and in original packaging. Damaged or used items are not eligible.",
+      "Yes, you can request an exchange or return within 7 days of delivery if the phone is unused, sealed, and in original packaging. Used or damaged products are not eligible for return.",
   },
   {
-    question: "How long does delivery take?",
+    question: "Do you provide software updates or after-sales support?",
     answer:
-      "Standard delivery takes 2-5 business days within the country. For international orders, it may take 7-14 business days depending on customs and courier availability.",
+      "Yes, Pixel bd ensures your device stays updated. All Google Pixel phones receive regular software and security updates directly from Google. Our team also provides post-purchase support.",
   },
   {
-    question: "Do you sell refurbished or used phones?",
+    question: "Is Cash on Delivery (COD) available?",
     answer:
-      "No, we only sell brand-new and sealed devices directly from authorized distributors and manufacturers.",
+      "Yes, Cash on Delivery is available for customers within Bangladesh. For international orders, we currently accept prepaid online payments only.",
   },
   {
-    question: "Is Cash on Delivery available?",
+    question: "How long does it take to deliver a Google Pixel phone?",
     answer:
-      "Yes, Cash on Delivery (COD) is available for local orders. For international deliveries, prepaid payment is required.",
+      "For local orders, delivery usually takes 2–4 business days. International deliveries may take 7–14 business days depending on customs and courier availability.",
+  },
+  {
+    question: "Do you offer trade-in or upgrade options for older Pixel models?",
+    answer:
+      "We occasionally offer trade-in and upgrade programs for select Pixel devices. Follow our social pages or check our website for upcoming offers.",
+  },
+  {
+    question: "Are Google Pixel accessories available too?",
+    answer:
+      "Yes! We stock a wide range of genuine Pixel accessories such as chargers, cases, screen protectors, and earbuds — all compatible with the latest models.",
   },
 ];
+
 
 export default function FAQPage() {
   const [openIndex, setOpenIndex] = useState(null);

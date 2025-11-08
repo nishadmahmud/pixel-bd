@@ -6,9 +6,11 @@ import {
   Facebook,
   Instagram,
   Linkedin,
+  MapPin,
+  Phone,
   Youtube,
 } from "lucide-react";
-import { FaWhatsapp } from "react-icons/fa6";
+import { FaTiktok, FaWhatsapp } from "react-icons/fa6";
 import companyLogo from "/public/favicon.png";
 
 export default function Footer() {
@@ -30,13 +32,13 @@ export default function Footer() {
             </Link>
             <div className="flex gap-3">
               {[
-                { icon: FaWhatsapp, href: "https://wa.me/+880166666666" },
+                { icon: FaWhatsapp, href: "https://wa.me/+8801601109872" },
                 {
                   icon: Facebook,
-                  href: "https://www.facebook.com",
+                  href: "https://www.facebook.com/pixelbdd",
                 },
-                { icon: Instagram, href: "/instagram" },
-                { icon: Linkedin, href: "/linkedin" },
+                { icon: Instagram, href: "www.instagram.com/gpixelbd" },
+                { icon: FaTiktok, href: "www.tiktok.com/@pixelbdofficial" },
                 { icon: Youtube, href: "/youtube" },
               ].map(({ icon: Icon, href }) => (
                 <Link
@@ -57,12 +59,12 @@ export default function Footer() {
             </h3>
             <ul className="space-y-2 text-sm">
               <li><Link 
-              href="/"
-              // href="/about-us"
+              // href="/"
+              href="/about-us"
                className="hover:underline">About Us</Link></li>
               <li><Link 
-              href="/" 
-              // href="/brands" 
+              // href="/" 
+              href="/brands" 
               className="hover:underline">Our Brands</Link></li>
               <li><Link 
               href="/order-tracking" 
@@ -76,9 +78,9 @@ export default function Footer() {
               Help Center
             </h3>
             <ul className="space-y-2 text-sm">
-              <li><Link href="/" className="hover:underline">FAQ</Link></li>
-              <li><Link href="tel:+88017777776" className="hover:underline">Support Center</Link></li>
-              <li><Link href="tel:+88017777776" className="hover:underline">Feedback</Link></li>
+              <li><Link href="/faq" className="hover:underline">FAQ</Link></li>
+              <li><Link href="tel:+8801601109872" className="hover:underline">Support Center</Link></li>
+              <li><Link href="tel:+8801601109872" className="hover:underline">Feedback</Link></li>
             </ul>
           </div>
 
@@ -89,24 +91,24 @@ export default function Footer() {
             </h3>
             <ul className="space-y-2 text-sm">
               <li><Link 
-              href="/"
-              // href="/terms-and-conditions"
+              // href="/"
+              href="/terms-and-conditions"
                className="hover:underline">Terms & Conditions</Link></li>
               <li><Link 
-              href="/"
-              // href="/refund-return-policy"
+              // href="/"
+              href="/refund-return-policy"
                className="hover:underline">Refund & Return Policy</Link></li>
               <li><Link 
-              href="/"
-              // href="/privacy-policy"
+              // href="/"
+              href="/privacy-policy"
                className="hover:underline">Privacy Policy</Link></li>
               <li><Link 
-              href="/"
-              // href="/warranty-policy"
+              // href="/"
+              href="/warranty-policy"
                className="hover:underline">Warranty Policy</Link></li>
               <li><Link 
-              href="/"
-              // href="/exchange-policy"
+              // href="/"
+              href="/exchange-policy"
                className="hover:underline">Exchange Policy</Link></li>
             </ul>
           </div>
@@ -118,12 +120,17 @@ export default function Footer() {
             </h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="tel:+8801666666666" className="hover:underline block">
-                  +8801666666666
+                <Link href="tel:+8801601109872" className="hover:underline block flex items-center gap-1">
+                <Phone size={16}></Phone>
+                  +8801601109872
                 </Link>
               </li>
-              <li className="text-xs leading-snug">
-                Dhaka, Bangladesh
+              <li className="text-xs leading-snug flex items-center gap-1">
+
+                <MapPin size={30}></MapPin>
+               
+ Shop 4A-039B,
+Block-A, West court, Level 4, Jamuna Future Park
               </li>
             </ul>
           </div>

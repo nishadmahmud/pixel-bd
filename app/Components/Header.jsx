@@ -215,7 +215,7 @@ const Header = ({ data }) => {
                 {navLoading ? (
                   <span className="text-sm text-gray-500">Loading...</span>
                 ) : navigationData.length > 0 ? (
-                  navigationData.slice(0,9).map((item) => (
+                  navigationData.slice(0,5).map((item) => (
                     <Link
                       key={item.id || item.category_id}
                     

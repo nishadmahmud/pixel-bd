@@ -10,11 +10,21 @@ export default function Home() {
       {/* Who We Are Section */}
       <section className="px-4 py-8 md:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto flex gap-10">
-          <h2 className="text-2xl font-semibold mb-4 text-nowrap text-black">Who We Are</h2>
+
+          <Image
+            src={'https://www.outletexpense.xyz/uploads/243-MD-Akter-Hossain/1762613907.jpg' || noImage}
+            alt="PixelBD Store Interior"
+            width={600}
+            height={400}
+            className="w-full rounded-lg"
+          />
+
+        <div>
+            <h2 className="text-2xl font-semibold mb-4 text-nowrap text-black">Who We Are</h2>
           <div>
             <p className="text-gray-600">
                 PixelBD is a one-stop tech shop that offers tech enthusiasts authentic smartphones, gadgets, and
-                devices at the best prices. We have been serving our customers since 2015, and we have never failed to
+                devices at the best prices. We have been serving our customers, and we have never failed to
                 achieve the highest customer satisfaction by ensuring top-notch service through multichannel shopping
                 stores, online store, EMI facility, exchange offers, free home delivery, dedicated service centers, and many
                 more.
@@ -26,6 +36,7 @@ export default function Home() {
                 towards perfection and quality service.
             </p>
           </div>
+        </div>
         </div>
       </section>
 
@@ -75,7 +86,7 @@ export default function Home() {
       <section className="flex gap-3 px-4 py-8 w-11/12 mx-auto">
         <div className="max-w-6xl mx-auto">
           <Image
-            src={'https://www.outletexpense.xyz/uploads/228-Khalid-Hasan-Sifat/1760594546.jpg' || noImage}
+            src={'https://www.outletexpense.xyz/uploads/243-MD-Akter-Hossain/1762613789.jpg' || noImage}
             alt="PixelBD Store Interior"
             width={1200}
             height={600}
@@ -84,7 +95,7 @@ export default function Home() {
         </div>
         <div className="max-w-6xl mx-auto">
           <Image
-            src={'https://www.outletexpense.xyz/uploads/228-Khalid-Hasan-Sifat/1760594588.jpg' || noImage}
+            src={'https://www.outletexpense.xyz/uploads/243-MD-Akter-Hossain/1762613837.jpg' || noImage}
             alt="PixelBD Store Interior"
             width={1200}
             height={600}
@@ -93,7 +104,7 @@ export default function Home() {
         </div>
         <div className="max-w-6xl mx-auto">
           <Image
-            src={'https://www.outletexpense.xyz/uploads/228-Khalid-Hasan-Sifat/1760594790.jpg' || noImage}
+            src={'https://www.outletexpense.xyz/uploads/243-MD-Akter-Hossain/1762613818.jpg' || noImage}
             alt="PixelBD Store Interior"
             width={1200}
             height={600}

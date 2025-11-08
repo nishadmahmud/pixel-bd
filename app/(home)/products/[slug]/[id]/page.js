@@ -1773,6 +1773,14 @@ const Page = ({ params }) => {
   const [isFixed, setIsFixed] = useState(false)
   const stopSectionRef = useRef(null)
 
+   const specRef = useRef(null);
+  const descRef = useRef(null);
+  const warrantyRef = useRef(null);
+
+  const scrollToSection = (ref) => {
+    ref.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   const { id } = params
   const {
     data: product,
@@ -2414,67 +2422,89 @@ const Page = ({ params }) => {
 
             {/* Tabs for Additional Info */}
             <div className="bg-white rounded-md shadow-xs border border-slate-200 overflow-hidden">
-              <div className="flex bg-slate-50 border-b border-slate-200">
-                {["Specification", "Description", "Warranty"].map((tab) => (
-                  <button
-                    key={tab}
-                    onClick={() => setActiveTab(tab)}
-                    className={`flex-1 py-4 px-6 text-sm font-semibold transition-all duration-200 ${
-                      activeTab === tab
-                        ? "bg-white text-gray-600 border-b-2 border-gray-600 -mb-px"
-                        : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
-                    }`}
-                  >
-                    {tab}
-                  </button>
-                ))}
-              </div>
+      {/* Top navigation buttons */}
+      <div className="flex bg-slate-50 border-b border-slate-200">
+        <button
+          onClick={() => scrollToSection(specRef)}
+          className="flex-1 py-4 px-6 text-sm font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-all duration-200"
+        >
+          Specification
+        </button>
+        <button
+          onClick={() => scrollToSection(descRef)}
+          className="flex-1 py-4 px-6 text-sm font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-all duration-200"
+        >
+          Description
+        </button>
+        <button
+          onClick={() => scrollToSection(warrantyRef)}
+          className="flex-1 py-4 px-6 text-sm font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-all duration-200"
+        >
+          Warranty
+        </button>
+      </div>
 
-              <div className="p-6 min-h-[300px]">
-                {activeTab === "Specification" && (
-                  <div className="space-y-4">
-                    {product?.data?.specifications && product.data.specifications.length > 0 ? (
-                      product.data.specifications.map((item, index) => (
-                        <div
-                          key={index}
-                          className="flex justify-between items-center py-3 px-4 bg-slate-50 rounded-lg border border-slate-100"
-                        >
-                          <span className="font-semibold text-slate-700">{item.name}</span>
-                          <span className="text-slate-600 text-right max-w-xs">{item.description}</span>
-                        </div>
-                      ))
-                    ) : (
-                      <div className="text-slate-500 text-center py-12">No specifications available</div>
-                    )}
-                  </div>
-                )}
-
-                {activeTab === "Description" && (
-                  <div className="prose prose-slate max-w-none">
-                    {descriptionText ? (
-                      <p className="text-slate-600 leading-relaxed text-lg">{descriptionText}</p>
-                    ) : (
-                      <p className="text-slate-500 text-center py-12">No description available</p>
-                    )}
-                  </div>
-                )}
-
-                {activeTab === "Warranty" && (
-                  <div className="text-slate-600 leading-relaxed text-lg">
-                    <p>
-                      Explore our{" "}
-                      <Link
-                        href="/warranty-policy"
-                        className="text-blue-600 hover:text-blue-700 font-semibold hover:underline"
-                      >
-                        Warranty Policy
-                      </Link>{" "}
-                      page for detailed information about our comprehensive warranty coverage and support services.
-                    </p>
-                  </div>
-                )}
-              </div>
+      {/* Sections stacked vertically */}
+      <div className="p-6 space-y-12">
+        {/* Specifications Section */}
+        <div ref={specRef} id="specification">
+          <h2 className="text-xl font-semibold text-slate-800 mb-4 border-b pb-2">
+            Specifications
+          </h2>
+          {product?.data?.specifications?.length > 0 ? (
+            <div className="space-y-4">
+              {product.data.specifications.map((item, index) => (
+                <div
+                  key={index}
+                  className="flex justify-between items-center py-3 px-4 bg-slate-50 rounded-lg border border-slate-100"
+                >
+                  <span className="font-semibold text-slate-700">{item.name}</span>
+                  <span className="text-slate-600 text-right max-w-xs">{item.description}</span>
+                </div>
+              ))}
             </div>
+          ) : (
+            <div className="text-slate-500 text-center py-12">
+              No specifications available
+            </div>
+          )}
+        </div>
+
+        {/* Description Section */}
+        <div ref={descRef} id="description">
+          <h2 className="text-xl font-semibold text-slate-800 mb-4 border-b pb-2">
+            Description
+          </h2>
+          {descriptionText ? (
+            <p className="text-slate-600 leading-relaxed text-lg">
+              {descriptionText}
+            </p>
+          ) : (
+            <p className="text-slate-500 text-center py-12">
+              No description available
+            </p>
+          )}
+        </div>
+
+        {/* Warranty Section */}
+        <div ref={warrantyRef} id="warranty">
+          <h2 className="text-xl font-semibold text-slate-800 mb-4 border-b pb-2">
+            Warranty
+          </h2>
+          <p className="text-slate-600 leading-relaxed text-lg">
+            Explore our{" "}
+            <Link
+              href="/warranty-policy"
+              className="text-blue-600 hover:text-blue-700 font-semibold hover:underline"
+            >
+              Warranty Policy
+            </Link>{" "}
+            page for detailed information about our comprehensive warranty coverage
+            and support services.
+          </p>
+        </div>
+      </div>
+    </div>
           </div>
         </div>
 

@@ -25,7 +25,7 @@ export default function RefundPolicyPage() {
             Overview
           </h2>
           <p>
-            Thank you for shopping with <strong>GadgetZone</strong>!  
+            Thank you for shopping with <strong>Pixel Bd</strong>!  
             We want you to be completely satisfied with your purchase.  
             If you are not fully happy with your order, we’re here to help with
             a straightforward return and refund process.
@@ -115,13 +115,7 @@ export default function RefundPolicyPage() {
           <p>
             If you have questions about your order or need help with a return,  
             contact our support team at{" "}
-            <a
-              href="mailto:support@gadgetzone.com"
-              className="text-orange-600 font-medium hover:underline"
-            >
-              support@appledady.com
-            </a>{" "}
-            or call us at <strong>+8801345755216</strong>.
+            call us at <strong>+8801601109872</strong>.
           </p>
         </section>
 
