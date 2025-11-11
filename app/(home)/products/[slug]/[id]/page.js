@@ -2410,7 +2410,7 @@ const Page = ({ params }) => {
               </div>
 
               <Link
-                href="https://wa.me/+8801888888888"
+                href="https://wa.me/+8801601109872"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center w-full md:gap-3 gap-1.5 md:py-3 py-2 md:px-6 px-3 bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-md font-semibold hover:from-green-600 hover:to-emerald-600 transition-all duration-300 hover:scale-105 md:text-base text-sm"
