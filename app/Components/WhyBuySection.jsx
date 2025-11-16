@@ -16,7 +16,7 @@ export default function WhyBuySection() {
     },
     {
       icon: <RotateCcw className="w-10 h-10 text-[#fbbc05]" />,
-      title: "7 days replacemnt guraanty",
+      title: "7 days replacemnt guarantee",
       button: "Learn more",
     },
   ];
