@@ -40,7 +40,7 @@ const HeroSlider = ({ slider }) => {
             Browse phones
           </Link>
           <Link
-            href="/"
+            href="/blogs"
             className="text-blue-600 hover:text-blue-800 font-medium flex items-center gap-1"
           >
             Watch the spot <ChevronRight size={16} />

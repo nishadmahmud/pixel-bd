@@ -16,7 +16,7 @@ export default function WhyBuySection() {
     },
     {
       icon: <RotateCcw className="w-10 h-10 text-[#fbbc05]" />,
-      title: "Free and easy returns.",
+      title: "7 days replacemnt guraanty",
       button: "Learn more",
     },
   ];
@@ -42,7 +42,7 @@ export default function WhyBuySection() {
         ))}
       </div>
 
-      <div className="mt-12 text-xs text-gray-500 max-w-6xl px-8 leading-relaxed text-left">
+      {/* <div className="mt-12 text-xs text-gray-500 max-w-6xl px-8 leading-relaxed text-left">
         <ol className="list-decimal list-inside space-y-2">
           <li>
             Google Fi Wireless is not subject to data traffic deprioritization
@@ -69,7 +69,7 @@ export default function WhyBuySection() {
 Get a 50% line discount for 15 months via monthly bill credits, applicable per line for each person that brings a phone and joins the Unlimited Essentials or Unlimited Standard plan (new users only) at fi.google.com, ending 11/4/25 at 9:59am PT, or while supplies last. On Unlimited Essentials, pay $17.50/mo for 1 line, $30/mo for 2 lines, $40/mo for 3 lines, $45/mo for 4 lines, $56.50/mo for 5 lines, or $67.50/mo for 6 lines for 12 months. On Unlimited Standard, pay $25/mo for 1 line, $40/mo for 2 lines, $45/mo for 3 lines, $50/mo for 4 lines, $62.50/mo for 5 lines, or $75/mo for 6 lines for 15 months. Bill credits are applied to plan charges (e.g., data, calls, texts) and taxes and fees on the newly activated line, and exclude financing costs, device protection and international charges. While this offer cannot be combined with other device promotions, it will remain valid when purchasing a new device (without any promotion) or switching to a new device before 15 months. Changing, or suspending the account before 15 months will void promotion and credits will stop. Promotions are non-transferable, not valid for cash or cash equivalent. US residents with US shipping addresses only. Must be 18 years or older, with Google Pay and Google Fi Wireless accounts. Limit 1 per customer or group plan member. Taxes payable at checkout. Void where prohibited.
           </li>
         </ol>
-      </div>
+      </div> */}
     </section>
   );
 }

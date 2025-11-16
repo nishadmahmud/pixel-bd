@@ -192,8 +192,8 @@ const Header = ({ data }) => {
     <div>
       {/* Main Header */}
       <header className="w-full bg-white border-b border-gray-200 sticky top-0 z-50">
-        <div className="w-11/12 mx-auto">
-          <div className="flex items-center justify-between h-16">
+        <div>
+          <div className="flex items-center justify-between h-16 w-11/12 mx-auto">
             {/* Left: Logo and Navigation */}
             <div className="flex items-center gap-8">
               {/* Logo - Desktop */}
@@ -242,7 +242,7 @@ const Header = ({ data }) => {
             </div>
 
             {/* Center: Logo - Mobile */}
-            <Link href="/" className="flex-shrink-0 md:hidden absolute left-1/2 -translate-x-1/2">
+            <Link href="/" className="flex-shrink-0 md:hidden absolute left-16 -translate-x-1/2">
               <Image
                 src="https://www.outletexpense.xyz/uploads/259-Shydul-Amir-Jihad/1761208216.png"
                 alt="logo"
@@ -353,28 +353,15 @@ const Header = ({ data }) => {
               </div>
 
               {/* Search Icon - Mobile */}
-              <button onClick={handleSearchIconClick} className="md:hidden rounded-lg">
+              {/* <button onClick={handleSearchIconClick} className="md:hidden rounded-lg">
                 {isSearchOpen ? (
                   <X size={20} className="text-gray-700" />
                 ) : (
                   <Search size={20} className="text-gray-700" />
                 )}
-              </button>
+              </button> */}
 
-              {/* Cart Icon */}
-              <Link 
-              href="/cart" 
-         
-              className="relative p-2 rounded-lg transition-colors">
-                <ShoppingCart size={20} className="text-gray-700" />
-                {total > 0 && (
-                  <span className="absolute top-1 right-1 bg-gray-900 text-white font-semibold rounded-full w-3 h-3 flex items-center justify-center text-[9px]">
-                    {total}
-                  </span>
-                )}
-              </Link>
-
-              {/* Account Icon */}
+               {/* Account Icon */}
               <div className="relative">
                 {users ? (
                   <Link
@@ -404,6 +391,21 @@ const Header = ({ data }) => {
 
                
               </div>
+
+              {/* Cart Icon */}
+              <Link 
+              href="/cart" 
+         
+              className="relative p-2 border-gray-500 transition-colors md:border-none border rounded-full">
+                <ShoppingCart size={19} className="text-gray-700" />
+                {total > 0 && (
+                  <span className="absolute top-1 right-1 bg-gray-900 text-white font-semibold rounded-full w-3 h-3 flex items-center justify-center text-[9px]">
+                    {total}
+                  </span>
+                )}
+              </Link>
+
+             
             </div>
           </div>
 
@@ -469,8 +471,8 @@ const Header = ({ data }) => {
 
 
           {/* Mobile Search Bar - Animated */}
-          {isSearchOpen && (
-            <div className="md:hidden border-t border-gray-200 py-3 px-4 animate-in slide-in-from-top-2 duration-300">
+          {!isSearchOpen && (
+            <div className="md:hidden   animate-in bg-gray-300 px-4 w-full slide-in-from-top-2 duration-300">
               <div className="relative">
                 <input
                   ref={searchInputRef}
@@ -483,7 +485,7 @@ const Header = ({ data }) => {
                       setShowBar(true)
                     }
                   }}
-                  className="w-full px-4 py-2 pl-10 pr-4 text-[16px] rounded-full bg-gray-100 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-300"
+                  className="w-full px-4 py-2 pl-10 pr-4 text-[16px] rounded-full bg-white my-2 border border-gray-300 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-300"
                 />
                 <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
 
