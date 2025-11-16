@@ -199,11 +199,11 @@ const Header = ({ data }) => {
               {/* Logo - Desktop */}
               <Link href="/" className="flex-shrink-0 hidden md:block">
                 <Image
-                  src="https://www.outletexpense.xyz/uploads/259-Shydul-Amir-Jihad/1761213710.png"
+                  src="https://www.outletexpense.xyz/uploads/215-Rifat-Hasan/1763290156.png"
                   alt="logo"
-                  width={40}
-                  height={40}
-                  className="h-10 w-auto"
+                  width={100}
+                  height={100}
+                  className="h-6 w-auto"
                   onError={(e) => {
                     e.currentTarget.src = "/placeholder.svg"
                   }}
@@ -242,13 +242,13 @@ const Header = ({ data }) => {
             </div>
 
             {/* Center: Logo - Mobile */}
-            <Link href="/" className="flex-shrink-0 md:hidden absolute left-16 -translate-x-1/2">
+            <Link href="/" className="flex-shrink-0 md:hidden absolute left-24 -translate-x-1/2">
               <Image
-                src="https://www.outletexpense.xyz/uploads/259-Shydul-Amir-Jihad/1761208216.png"
+                src="https://www.outletexpense.xyz/uploads/215-Rifat-Hasan/1763290156.png"
                 alt="logo"
-                width={40}
-                height={40}
-                className="h-10 w-auto"
+                width={200}
+                height={200}
+                className="h-5 w-auto"
                 onError={(e) => {
                   e.currentTarget.src = "/placeholder.svg"
                 }}
