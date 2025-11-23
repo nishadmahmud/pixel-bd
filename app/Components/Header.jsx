@@ -199,7 +199,7 @@ const Header = ({ data }) => {
               {/* Logo - Desktop */}
               <Link href="/" className="flex-shrink-0 hidden md:block">
                 <Image
-                  src="https://www.outletexpense.xyz/uploads/215-Rifat-Hasan/1763445067_691c094b8daf2.png"
+                  src="https://www.outletexpense.xyz/uploads/215-Rifat-Hasan/1763909864_692320e8c8265.png"
                   alt="logo"
                   width={100}
                   height={100}
@@ -244,7 +244,7 @@ const Header = ({ data }) => {
             {/* Center: Logo - Mobile */}
             <Link href="/" className="flex-shrink-0 md:hidden absolute left-32 -translate-x-1/2">
               <Image
-                src="https://www.outletexpense.xyz/uploads/215-Rifat-Hasan/1763445067_691c094b8daf2.png"
+                src="https://www.outletexpense.xyz/uploads/215-Rifat-Hasan/1763909864_692320e8c8265.png"
                 alt="logo"
                 width={200}
                 height={200}
