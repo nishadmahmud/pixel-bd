@@ -1,4 +1,3 @@
-
 import Image from "next/image";
 import { noImage } from "@/app/utils/constants";
 
