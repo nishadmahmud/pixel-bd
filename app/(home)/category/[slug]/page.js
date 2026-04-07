@@ -1,5 +1,5 @@
 "use client"
-import { useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import "react-range-slider-input/dist/style.css"
 import useSWR from "swr"
 import { useSearchParams } from "next/navigation"
@@ -8,15 +8,15 @@ import FilterProduct from "@/app/Components/FIlterProduct"
 import Pagination from "@/app/Components/pagination"
 import ProductCard from "@/app/Components/ProductCard"
 import Image from "next/image"
-import iphoneBanner from "/public/iphoneBanner.jpg"
+
 import CardSkeleton from "@/app/Components/CardSkeleton"
 import useStore from "@/app/CustomHooks/useStore"
-import noImg from "/public/no-image.jpg"
 import Link from "next/link"
 
 const fetcher = (url) => fetch(url).then((res) => res.json())
 
 const Page = ({ params }) => {
+  const { slug: id } = React.use(params);
   const { categories } = useStore()
   const searchParams = useSearchParams()
   const searchedCategory = searchParams.get("category")
@@ -24,7 +24,6 @@ const Page = ({ params }) => {
 
   const limit = 20
   const totalPage = Math.ceil(Number.parseInt(searchedTotal) / limit)
-  const { slug: id } = params
 
   const [filteredItems, setFilteredItems] = useState([])
   const [isChecked, setIsChecked] = useState(false)
@@ -264,7 +263,7 @@ const Page = ({ params }) => {
       {/* Hero Banner */}
       {/* <div className="relative rounded-2xl overflow-hidden mb-10 group">
         <Image
-          src={currentCategory ? currentCategory?.banner : iphoneBanner || noImg}
+          src={currentCategory ? currentCategory?.banner : "/iphoneBanner.jpg"}
           alt={searchedCategory || "Category banner"}
           width={1020}
           height={500}

@@ -2,7 +2,7 @@
 
 import  NextImage from "next/image";
 import { useState } from "react"
-import noImg from '/public/no-image.jpg'
+
 
 
 const MagnifiedImage= ({ image_path,alt }) => {
@@ -23,7 +23,7 @@ const MagnifiedImage= ({ image_path,alt }) => {
       <div className="relative w-full h-full border rounded-xl" onMouseLeave={() => setIsZooming(false)} onMouseMove={handleMouseMove} onMouseUp={() => setIsZooming(true)}>
         <NextImage 
         unoptimized
-        src={image_path || noImg}
+          src={image_path || "/no-image.jpg"}
         alt={alt}
         fill={true}
         style={{objectFit : 'contain'}}

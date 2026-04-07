@@ -1,14 +1,15 @@
-'use client';
-
+"use client";
+import React from "react";
 import Image from "next/image";
 import useStore from "@/app/CustomHooks/useStore";
-import noImg from "/public/no-image.jpg";
+
 
 export default function BlogPost({ params }) {
+  const { id } = React.use(params);
   const { blogs } = useStore();
   const blogsData = blogs?.data || [];
   const filteredBlogs = blogsData.filter(
-    (blog) => String(blog.id) === String(params.id)
+    (blog) => String(blog.id) === String(id)
   );
 
   if (filteredBlogs.length === 0) {
@@ -37,7 +38,7 @@ export default function BlogPost({ params }) {
         {/* RIGHT SIDE: Sticky Image */}
         <div className="order-1 lg:order-2 lg:sticky lg:top-24">
           <Image
-            src={blog.image || noImg}
+            src={blog.image || "/no-image.jpg"}
             alt={blog.title}
             width={800}
             height={800}

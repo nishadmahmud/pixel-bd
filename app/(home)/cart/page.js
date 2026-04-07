@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import useStore from "../../CustomHooks/useStore";
 import Image from "next/image";
-import noImg from "/public/no-image.jpg";
+
 import Link from "next/link";
 import { ArrowLeft, ShoppingCart, Trash2 } from "lucide-react";
 
@@ -358,7 +358,7 @@ const CartPage = () => {
                           ) : (
                             <Image
                             unoptimized
-                              src={noImg || "/placeholder.svg"}
+                              src={"/no-image.jpg" || "/placeholder.svg"}
                               alt={item.name}
                               fill
                               className="object-contain"

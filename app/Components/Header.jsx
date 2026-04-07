@@ -51,7 +51,7 @@ const Header = ({ data }) => {
     const fetchNavigationData = async () => {
       try {
         setNavLoading(true)
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_API}/public/categories`)
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_API}/public/categories/${userId}`)
         if (response.data?.data) {
           setNavigationData(response.data.data)
         }

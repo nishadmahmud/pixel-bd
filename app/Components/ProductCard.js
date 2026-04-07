@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import noImg from "/public/no-image.jpg";
+
 import Link from "next/link";
 
 const ProductCard = ({ product }) => {
@@ -52,7 +52,7 @@ const ProductCard = ({ product }) => {
           src={
             product?.image_path
               ? product.image_path
-              : product?.images?.[0] || noImg
+              : product?.images?.[0] || "/no-image.jpg"
           }
           alt={product?.name || "Product"}
           width={220}

@@ -3,15 +3,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import {
-  Facebook,
-  Instagram,
   Linkedin,
   MapPin,
   Phone,
-  Youtube,
 } from "lucide-react";
-import { FaTiktok, FaWhatsapp } from "react-icons/fa6";
-import companyLogo from "/public/favicon.png";
+import { FaFacebook, FaInstagram, FaTiktok, FaWhatsapp, FaYoutube } from "react-icons/fa6";
+
 
 export default function Footer() {
   return (
@@ -34,12 +31,12 @@ export default function Footer() {
               {[
                 { icon: FaWhatsapp, href: "https://wa.me/+8801601109872" },
                 {
-                  icon: Facebook,
+                  icon: FaFacebook,
                   href: "https://www.facebook.com/pixelbdd",
                 },
-                { icon: Instagram, href: "www.instagram.com/gpixelbd" },
+                { icon: FaInstagram, href: "www.instagram.com/gpixelbd" },
                 { icon: FaTiktok, href: "www.tiktok.com/@pixelbdofficial" },
-                { icon: Youtube, href: "/youtube" },
+                { icon: FaYoutube, href: "/youtube" },
               ].map(({ icon: Icon, href }) => (
                 <Link
                   key={href}

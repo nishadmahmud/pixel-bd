@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Share2, Copy, Check, Facebook, Instagram, Youtube, X, Twitter, MessageCircle } from "lucide-react";
+import { Share2, Copy, Check, X, MessageCircle } from "lucide-react";
+import { FaFacebook, FaInstagram, FaYoutube, FaXTwitter } from "react-icons/fa6";
 
 function Toast({ message, type, show, onClose }) {
   useEffect(() => {
@@ -146,10 +147,10 @@ export default function ShareModal() {
               <div className="space-y-3">
                 <label className="text-sm font-medium text-gray-700">Share on social media</label>
                 <div className="grid grid-cols-3 gap-3">
-                  <SocialButton icon={<Facebook size={16} />} color="bg-blue-600" label="Facebook" onClick={shareOnFacebook} />
-                  <SocialButton icon={<Instagram size={16} />} color="bg-gradient-to-r from-purple-500 to-pink-500" label="Instagram" onClick={shareOnInstagram} />
-                  <SocialButton icon={<Youtube size={16} />} color="bg-red-600" label="YouTube" onClick={shareOnYouTube} />
-                  <SocialButton icon={<Twitter size={16} />} color="bg-blue-400" label="Twitter" onClick={shareOnTwitter} />
+                  <SocialButton icon={<FaFacebook size={16} />} color="bg-blue-600" label="Facebook" onClick={shareOnFacebook} />
+                  <SocialButton icon={<FaInstagram size={16} />} color="bg-gradient-to-r from-purple-500 to-pink-500" label="Instagram" onClick={shareOnInstagram} />
+                  <SocialButton icon={<FaYoutube size={16} />} color="bg-red-600" label="YouTube" onClick={shareOnYouTube} />
+                  <SocialButton icon={<FaXTwitter size={16} />} color="bg-blue-400" label="Twitter" onClick={shareOnTwitter} />
                   <SocialButton icon={<MessageCircle size={16} />} color="bg-green-500" label="WhatsApp" onClick={shareOnWhatsApp} />
                 </div>
               </div>

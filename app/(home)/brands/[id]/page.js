@@ -10,13 +10,13 @@ import { fetcher, userId } from "@/app/utils/constants";
 import Pagination from "@/app/Components/Paginatiion";
 
 const Page = ({ params }) => {
+  const { id } = React.use(params);
   const searchParams = useSearchParams();
   const searchedCategory = searchParams.get("brand");
  
   const [currentPage, setCurrentPage] = useState(1);
   const limit = 20;
   const [totalPage, setTotalPage] = useState(0);
-  const { id } = params;
   const { data: products, isLoading } = useSWR(
     `${process.env.NEXT_PUBLIC_API}/public/brandwise-products/${id}/${userId}?page=${currentPage}&limit=${limit}`,
     fetcher

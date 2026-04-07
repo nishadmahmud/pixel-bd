@@ -7,7 +7,7 @@
 // // import { ShoppingCart, ShoppingBag, Heart } from "lucide-react";
 // // import Link from "next/link";
 // // import useSWR from "swr";
-// // import noImg from "/public/no-image.jpg";
+// // import "/no-image.jpg" from "/public/no-image.jpg";
 // // import MagnifiedImage from "@/app/Components/MagnifiedImage";
 // // import Breadcrumbs from "@/app/Components/Breadcrumbs";
 // // import { GrTechnology } from "react-icons/gr";
@@ -159,7 +159,7 @@
 // //       return allImages.map((img) => img.path);
 // //     }
 
-// //     return product?.data.images || [product?.data.image_path] || [noImg];
+// //     return product?.data.images || [product?.data.image_path] || ["/no-image.jpg"];
 // //   }
 
 // //   // Always get all thumbnail images regardless of color selection
@@ -171,7 +171,7 @@
 // //     // Fallback to default images
 // //     const defaultImages = product?.data.images || [
 // //         product?.data.image_path,
-// //       ] || [noImg];
+// //       ] || ["/no-image.jpg"];
 // //     return defaultImages.map((img, index) => ({ path: img, color: null }));
 // //   }
 
@@ -405,7 +405,7 @@
 // //                           }}
 // //                         >
 // //                           <Image
-// //                             src={imageObj.path || noImg}
+// //                             src={imageObj.path || "/no-image.jpg"}
 // //                             alt={`${product?.data.name} ${idx + 1}`}
 // //                             width={72}
 // //                             height={72}
@@ -437,7 +437,7 @@
 // //                   ) : (
 // //                     <div className="w-18 h-18 border-2 border-slate-200 rounded-xl">
 // //                       <Image
-// //                         src={noImg || "/placeholder.svg"}
+// //                         src={"/no-image.jpg" || "/placeholder.svg"}
 // //                         alt="No image"
 // //                         width={72}
 // //                         height={72}
@@ -465,7 +465,7 @@
 // //                     src={
 // //                       getImagesForColor()[imageIndex] ||
 // //                       product?.data.image_path ||
-// //                       noImg ||
+// //                       "/no-image.jpg" ||
 // //                       "/placeholder.svg"
 // //                     }
 // //                     alt={product?.data.name || "Product"}
@@ -801,7 +801,7 @@
 // //                 >
 // //                   <div className="aspect-square flex justify-center items-center mb-4 bg-slate-50 rounded-lg overflow-hidden">
 // //                     <Image
-// //                       src={product.image_path || noImg}
+// //                       src={product.image_path || "/no-image.jpg"}
 // //                       alt={product.name}
 // //                       width={120}
 // //                       height={120}
@@ -835,7 +835,7 @@
 // import { ShoppingCart, ShoppingBag } from "lucide-react";
 // import Link from "next/link";
 // import useSWR from "swr";
-// import noImg from "/public/no-image.jpg";
+// import "/no-image.jpg" from "/public/no-image.jpg";
 // import MagnifiedImage from "@/app/Components/MagnifiedImage";
 // import Breadcrumbs from "@/app/Components/Breadcrumbs";
 // import axios from "axios";
@@ -1738,14 +1738,14 @@
 
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 import useStore from "@/app/CustomHooks/useStore"
 import { FaWhatsapp } from "react-icons/fa6"
 import { ShoppingCart, ShoppingBag, Plus, Minus } from "lucide-react"
 import Link from "next/link"
 import useSWR from "swr"
-import noImg from "/public/no-image.jpg"
+
 import MagnifiedImage from "@/app/Components/MagnifiedImage"
 import Breadcrumbs from "@/app/Components/Breadcrumbs"
 import axios from "axios"
@@ -1756,6 +1756,7 @@ import ProductSkeleton from "@/app/Components/ProductDetailsSkeleton"
 import { toast } from "react-toastify"
 
 const Page = ({ params }) => {
+  const { id } = React.use(params)
   const { handleCart, getCartItems, refetch, setRefetch, handleBuy } = useStore()
   const [cartItems, setCartItems] = useState([])
   const [quantity, setQuantity] = useState(1)
@@ -1781,7 +1782,6 @@ const Page = ({ params }) => {
     ref.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
-  const { id } = params
   const {
     data: product,
     error,
@@ -1921,7 +1921,7 @@ const Page = ({ params }) => {
       return allImages.map((img) => img.path)
     }
 
-    return product?.data?.images || [product?.data?.image_path] || [noImg]
+    return product?.data?.images || [product?.data?.image_path] || ["/no-image.jpg"]
   }
 
   // Get all thumbnail images
@@ -1930,7 +1930,7 @@ const Page = ({ params }) => {
       return allImages
     }
 
-    const defaultImages = product?.data?.images || [product?.data?.image_path] || [noImg]
+    const defaultImages = product?.data?.images || [product?.data?.image_path] || ["/no-image.jpg"]
     return defaultImages.map((img) => ({ path: img, color: null }))
   }
 
@@ -2105,7 +2105,7 @@ const Page = ({ params }) => {
                             }}
                           >
                             <Image
-                              src={imageObj.path || noImg}
+                              src={imageObj.path || "/no-image.jpg"}
                               alt={`${product?.data?.name} ${idx + 1}`}
                               width={72}
                               height={72}
@@ -2136,7 +2136,7 @@ const Page = ({ params }) => {
                     ) : (
                       <div className="w-18 h-18 border-2 border-slate-200 rounded-xl">
                         <Image
-                          src={noImg || "/placeholder.svg"}
+                          src={"/no-image.jpg" || "/placeholder.svg"}
                           alt="No image"
                           width={72}
                           height={72}
@@ -2155,7 +2155,7 @@ const Page = ({ params }) => {
                   <div className="lg:hidden bg-white rounded-2xl shadow-sm p-6">
                     <Image
                       unoptimized
-                      src={getImagesForColor()[imageIndex] || product?.data?.image_path || noImg || "/placeholder.svg"}
+                      src={getImagesForColor()[imageIndex] || product?.data?.image_path || "/no-image.jpg" || "/placeholder.svg"}
                       alt={product?.data?.name || "Product"}
                       width={400}
                       height={400}
@@ -2523,7 +2523,7 @@ const Page = ({ params }) => {
                 >
                   <div className="aspect-square flex justify-center items-center mb-4 bg-slate-50 rounded-lg overflow-hidden">
                     <Image
-                      src={product.image_path || noImg}
+                      src={product.image_path || "/no-image.jpg"}
                       alt={product.name}
                       width={120}
                       height={120}

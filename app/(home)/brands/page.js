@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import "react-range-slider-input/dist/style.css";
 import Link from "next/link";
 import Image from "next/image";
-import noImg from '/public/no-image.jpg'
+
 import { userId } from "@/app/utils/constants";
 
 const Page = () => {
@@ -65,7 +65,7 @@ const Page = () => {
                 <button className="flex items-center gap-3 font-semibold text-black text-sm rounded-full px-2 py-1 hover:text-gray-500 transition-transform duration-300 hover:filter hover:grayscale-[70%]">
                   <Image
                     alt={brand.name}
-                    src={brand.image_path || noImg}
+                    src={brand.image_path || "/no-image.jpg"}
                     width={70}
                     height={70}
                     className="inherit"

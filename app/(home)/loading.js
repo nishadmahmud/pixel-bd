@@ -16,7 +16,7 @@ export default function Loading() {
 
   <div className="h-screen justify-center flex flex-col items-center justify-items-center w-full">
     <svg className="loaderSvg" viewBox="0 0 1320 300">
-        <text className="loaderText " x="50%" y="50%" dy=".35em" text-anchor="middle">
+        <text className="loaderText " x="50%" y="50%" dy=".35em" textAnchor="middle">
             PixelBD
         </text>
     </svg>

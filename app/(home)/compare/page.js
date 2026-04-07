@@ -4,7 +4,7 @@ import Image from "next/image"
 import { useState, useCallback, useEffect } from "react"
 import axios from "axios"
 import { useSearchParams } from "next/navigation"
-import noImg from "/public/no-image.jpg"
+
 import useStore from "@/app/CustomHooks/useStore"
 import { Search, X, Plus, ShoppingCart, Star, AlertCircle, GitCompare } from "lucide-react"
 import { userId } from "@/app/utils/constants"
@@ -65,7 +65,7 @@ const SearchField = ({
             >
               <div className="relative w-12 h-12 flex-shrink-0">
                 <Image
-                  src={product?.images?.[0] || product?.image_path || noImg}
+                src={product?.images?.[0] || product?.image_path || "/no-image.jpg"}
                   fill
                   alt="product"
                   className="object-cover rounded-lg"

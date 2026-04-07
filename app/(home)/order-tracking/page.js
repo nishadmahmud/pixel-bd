@@ -2,20 +2,17 @@
 
 import { SearchIcon } from "lucide-react";
 import { useState } from "react";
-import orderRecived from "/public/orderRecived.png";
-import orderConfirmed from "/public/orderConfirmd.png";
-import deliveryProccesing from "/public/deliveryProcc.png";
-import orderDelivered from "/public/delivered.png";
+
 import Image from "next/image";
 import { userId } from "@/app/utils/constants";
 import { toast } from "react-toastify";
 
 
 const STEPS = [
-  { title: "Order Received", image: orderRecived },
-  { title: "Order Confirmed", image: orderConfirmed },
-  { title: "Delivery Processing", image: deliveryProccesing },
-  { title: "Order Delivered", image: orderDelivered },
+  { title: "Order Received", image: "/orderRecived.png" },
+  { title: "Order Confirmed", image: "/orderConfirmd.png" },
+  { title: "Delivery Processing", image: "/deliveryProcc.png" },
+  { title: "Order Delivered", image: "/delivered.png" },
 ];
 
 export default function Page() {

@@ -1,13 +1,13 @@
 "use client";
-
+import React, { useEffect, useState } from "react";
 import ProductCard from "@/app/Components/ProductCard";
-import { useEffect, useState } from "react";
 import axios from "axios";
 import Image from "next/image";
 import { userId } from "@/app/utils/constants";
 
 
 const Page = ({ params }) => {
+    const { id } = React.use(params);
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [page, setPage] = useState(1);
@@ -25,10 +25,10 @@ const Page = ({ params }) => {
     const fetchProducts = async (pageNum) => {
         setLoading(true);
         try {
-            // console.log(`Fetching data for ID: ${params.id} and Page: ${pageNum}`);
+            // console.log(`Fetching data for ID: ${id} and Page: ${pageNum}`);
 
             const response = await axios.get(
-                `${process.env.NEXT_PUBLIC_API}/public/best-deals-brand-id/${userId}/${params.id}?page=${pageNum}`
+                `${process.env.NEXT_PUBLIC_API}/public/best-deals-brand-id/${userId}/${id}?page=${pageNum}`
             );
 
 
@@ -45,16 +45,16 @@ const Page = ({ params }) => {
     };
 
     useEffect(() => {
-        if (params.id) {
+        if (id) {
             fetchProducts(page);
         }
-    }, [params.id, page]);
+    }, [id, page]);
 
     // Ensure `offer` exists and contains a `data` array before accessing it
     const offerData = offer?.data || [];
 
 
-    const filteredOffer = offerData.find((offerItem) => offerItem.brand_id == params.id) || null;
+    const filteredOffer = offerData.find((offerItem) => offerItem.brand_id == id) || null;
 
 
     // Sorting function
